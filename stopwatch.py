@@ -4,32 +4,43 @@ import time
 def Main():
     global root
 
+#------------------------------Screen management
     root = Tk()
     root.title("Stopwatch made by PreyO AhmeD")
-    width = 400
-    height = 200
+    width = 500
+    height = 300
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
     x = (screen_width / 2) - (width / 2)
     y = (screen_height / 2) - (height / 2)
     root.geometry("%dx%d+%d+%d" % (width, height, x, y))
+    root.minsize(500,300)
+    root.maxsize(500,300)
     Top = Frame(root, width=400)
     Top.pack(side=TOP)
+#-----------------------------frames
     stopWatch = StopWatch(root)
     stopWatch.pack(side=TOP)
     Bottom = Frame(root, width=400)
     Bottom.pack(side=BOTTOM)
-    Start = Button(Bottom, text='START', command=stopWatch.Start, width=8, height=2)
+#-----------------------------Images
+    start_img = PhotoImage(file="img/start.png")
+    stop_img = PhotoImage(file="img/stop.png")
+    exit_img = PhotoImage(file="img/exit.png")
+    reset_img = PhotoImage(file="img/reset.png")
+#-----------------------------Buttons
+    Start = Button(Bottom, text='START', command=stopWatch.Start,font="consolas 20 bold", image=start_img, compound=LEFT)
     Start.pack(side=LEFT)
-    Stop = Button(Bottom, text='STOP', command=stopWatch.Stop, width=8, height=2)
+    Stop = Button(Bottom, text='STOP', command=stopWatch.Stop,font="consolas 20 bold", image=stop_img, compound=LEFT)
     Stop.pack(side=LEFT)
-    Reset = Button(Bottom, text='RESET', command=stopWatch.Reset, width=8, height=2)
+    Reset = Button(Bottom, text='RESET', command=stopWatch.Reset,font="consolas 20 bold", image=reset_img, compound=LEFT)
     Reset.pack(side=LEFT)
-    Exit = Button(Bottom, text='CLOSE', command=stopWatch.Exit, width=8, height=2)
+    Exit = Button(Bottom, text='CLOSE', command=stopWatch.Exit, font="consolas 20 bold", image=exit_img, compound=LEFT)
     Exit.pack(side=LEFT)
+#-----------------------------Labels
     Title = Label(Top, text="StopWatch PreyO AhmeD", font=("arial", 20), fg="red", bg="blue")
     Title.pack(fill=X)
-    root.config(bg="yellow")
+    root.config(bg="skyblue")
     root.mainloop()
 
 
